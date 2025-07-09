@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: blackjack
+
+  data:
+    mongodb:
+      database: blackjack_games
+      uri: mongodb://localhost:27017
+
+
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/blackjack_players?serverTimezone=UTC
+    username: root
+    password: 1707
+    properties:
+      serverZone: UTC
+      databaseZone: UTC
+      useLegacyDatetimeCode: false
+      serverTimezone: UTC
+
+server:
+  port: 8080
+
+
+# swagger
+# http://localhost:8080/v3/api-docs
+# http://localhost:8080/swagger-ui/index.html#/
+
+# index.html
+# http://localhost:8080/index.html
