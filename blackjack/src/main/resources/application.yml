@@ -9,14 +9,10 @@ spring:
 
 
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/blackjack_players?serverTimezone=UTC
+#    url: r2dbc:mysql://localhost:3306/blackjack_players?serverTimezone=UTC
+    url: r2dbc:mysql://localhost:3306/blackjack_players
     username: root
     password: 1707
-    properties:
-      serverZone: UTC
-      databaseZone: UTC
-      useLegacyDatetimeCode: false
-      serverTimezone: UTC
 
 server:
   port: 8080

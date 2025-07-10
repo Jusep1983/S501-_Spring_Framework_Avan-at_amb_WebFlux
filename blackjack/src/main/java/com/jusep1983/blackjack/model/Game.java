@@ -38,6 +38,7 @@ public class Game {
     @Schema(description = "Winner of the game: player, dealer or tie", example = "PLAYER_WIN")
     private GameResult gameResult;
     private Deck deck;
+
     public Game(String playerName) {
         this.playerName = playerName;
         this.createdAt = LocalDateTime.now();
