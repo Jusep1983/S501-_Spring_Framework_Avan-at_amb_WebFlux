@@ -87,6 +87,7 @@ public class GlobalExceptionHandler {
         );
         System.out.println("Manejando Exception");
         ex.getMessage();
+        ex.printStackTrace();
         return Mono.just(new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR));
     }
 
