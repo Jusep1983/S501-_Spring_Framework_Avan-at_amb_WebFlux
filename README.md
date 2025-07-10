@@ -1,5 +1,4 @@
 # 🎲 S501-_Spring_Framework_Avançat_amb_WebFlux
-# 🎲 Blackjack API - Spring Boot
 
 Proyecto API REST para un juego de Blackjack de un jugador contra el dealer, desarrollado con Spring Boot y WebFlux.
 
@@ -74,14 +73,14 @@ cd blackjack-api
 http://localhost:8080/swagger-ui.html
 ```
 
-🧪 Testing
+## 🧪 Testing
 Para ejecutar los tests:
 
 ```bash
 ./mvnw test
 ```
 
-📂 Estructura básica del proyecto
+## 📂 Estructura básica del proyecto
 
 - controller - Endpoints REST
 
