@@ -92,7 +92,43 @@ Para ejecutar los tests:
 
 - exception - Manejo de errores personalizados
 
+## 🐳 Dockerización y uso de la imagen Docker
 
+### Construir la imagen localmente
+
+Si quieres construir la imagen Docker de la API desde el código fuente:
+
+```bash
+# En la raíz del proyecto (donde está el Dockerfile)
+docker build -t jusep83/blackjack-blackjack-api:latest .
+```
+Ejecutar el proyecto con Docker Compose (localmente)
+Para levantar la API junto con las bases de datos MongoDB y MySQL usando Docker Compose:
+
+```bash
+docker-compose up -d
+```
+Esto levantará los tres contenedores y la app estará disponible en:
+
+```bash
+http://localhost:8080/swagger-ui.html
+# tambien disponible con frontend sencillo en
+http://localhost:8080/index.html
+```
+Parar y eliminar los contenedores y volúmenes
+```bash
+docker-compose down -v
+```
+Descargar y ejecutar la imagen Docker de la API (sin build)
+
+Si solo quieres usar la imagen ya publicada en Docker Hub y levantar la API (requiere que tengas las bases de datos corriendo y accesibles):
+
+```bash
+docker pull jusep83/blackjack-blackjack-api:latest
+
+docker run -p 8080:8080 --env SPRING_PROFILES_ACTIVE=docker --network blackjack-net jusep83/blackjack-blackjack-api:latest
+```
+Asegúrate de que las bases de datos MongoDB y MySQL estén accesibles desde el contenedor (pueden estar en otros contenedores en la misma red Docker).
 
 👤 Autor
 Josep1983
