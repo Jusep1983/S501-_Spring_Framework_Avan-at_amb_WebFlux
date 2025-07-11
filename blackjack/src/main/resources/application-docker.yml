@@ -1,0 +1,12 @@
+spring:
+  r2dbc:
+    url: r2dbc:mysql://mysql-db:3306/blackjack_players
+    username: root
+    password: 1707
+
+  data:
+    mongodb:
+      uri: mongodb://mongo-db:27017/blackjack_games
+
+server:
+  port: 8080
