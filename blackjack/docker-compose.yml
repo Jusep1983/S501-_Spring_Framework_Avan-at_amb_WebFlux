@@ -1,0 +1,47 @@
+services:
+  mysql-db:
+    image: mysql:9.2
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: 1707
+      MYSQL_DATABASE: blackjack_players
+    ports:
+      - "33306:3306" # Puerto cambiado para evitar conflicto con MySQL local
+    networks:
+      - blackjack-net
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+
+  mongo-db:
+    image: mongo:7.0
+    container_name: mongo-db
+    ports:
+      - "27018:27017" # Puerto cambiado para evitar conflicto con Mongo local
+    networks:
+      - blackjack-net
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  blackjack-api:
+    build: .
+    container_name: blackjack-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo-db
+      - mysql-db
+    networks:
+      - blackjack-net
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    restart: unless-stopped
+
+volumes:
+  mysql-data:
+  mongo-data:
+
+networks:
+  blackjack-net:
