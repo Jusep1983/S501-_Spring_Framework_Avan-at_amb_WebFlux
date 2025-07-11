@@ -19,9 +19,10 @@ spring:
     username: ${SPRING_R2DBC_USERNAME}
     password: ${SPRING_R2DBC_PASSWORD}
 
+#server:
+#  port: 8080
 server:
-  port: 8080
-
+  port: ${PORT:8080}
 
 # swagger
 # http://localhost:8080/v3/api-docs
