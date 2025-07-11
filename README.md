@@ -56,6 +56,8 @@ Está desarrollado usando:
 
 ```bash
 git clone https://github.com/tu-usuario/blackjack-api.git
+```
+```bash
 cd blackjack-api
 ```
 
@@ -112,7 +114,9 @@ Esto levantará los tres contenedores y la app estará disponible en:
 
 ```bash
 http://localhost:8080/swagger-ui.html
-# tambien disponible con frontend sencillo en
+```
+Tambien disponible con frontend sencillo en:
+```bash
 http://localhost:8080/index.html
 ```
 Parar y eliminar los contenedores y volúmenes
@@ -125,7 +129,8 @@ Si solo quieres usar la imagen ya publicada en Docker Hub y levantar la API (req
 
 ```bash
 docker pull jusep83/blackjack-blackjack-api:latest
-
+```
+```bash
 docker run -p 8080:8080 --env SPRING_PROFILES_ACTIVE=docker --network blackjack-net jusep83/blackjack-blackjack-api:latest
 ```
 Asegúrate de que las bases de datos MongoDB y MySQL estén accesibles desde el contenedor (pueden estar en otros contenedores en la misma red Docker).
