@@ -1,6 +1,10 @@
 let currentGameId = null;
+const isLocal = window.location.hostname === "localhost";
+const api = isLocal
+  ? "http://localhost:8080"
+  : "https://s501-blackjack-api.onrender.com";
 //const api = "http://localhost:8080";
-const api = "https://s501-blackjack-api.onrender.com";
+//const api = "https://s501-blackjack-api.onrender.com";
 function createPlayer() {
   const name = document.getElementById("playerName").value;
   fetch(`${api}/player/new`, {
