@@ -16,6 +16,8 @@ spring:
     username: ${SPRING_R2DBC_USERNAME}
     password: ${SPRING_R2DBC_PASSWORD}
 
+  mongodb:
+    uri: ${SPRING_DATA_MONGODB_URI}
 #server:
 #  port: 8080
 server:
