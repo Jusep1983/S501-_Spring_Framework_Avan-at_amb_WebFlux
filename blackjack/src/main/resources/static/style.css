@@ -1,49 +1,63 @@
-body {
+/* 🔧 Fondo global */
+html, body {
+  background-color: #121212;
+  color: #f1f1f1;
+  margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 30px;
-  background-color: #f9f9f9;
-  color: #333;
 }
 
+/* 🧱 Contenido con márgenes controlados */
+body {
+  padding: 30px;
+}
+
+/* 🧩 Secciones oscuras */
 section {
-  border: 1px solid #ddd;
+  border: 1px solid #333;
   padding: 20px;
   margin-bottom: 25px;
   border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.05);
 }
 
-h2 {
+/* 🎨 Títulos */
+h1, h2 {
+  color: #4dabf7;
   margin-top: 0;
-  color: #0066cc;
 }
 
+/* ✏️ Inputs y botones */
 input[type="text"],
 button {
   padding: 8px 12px;
   margin: 5px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 6px;
   font-size: 14px;
+  background-color: #2c2c2c;
+  color: #f1f1f1;
 }
 
 input[type="text"]:focus {
-  border-color: #0066cc;
+  border-color: #4dabf7;
   outline: none;
+  background-color: #3a3a3a;
 }
 
 button {
-  background-color: #0066cc;
-  color: white;
+  background-color: #4dabf7;
+  color: #121212;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0052a3;
+  background-color: #3390ff;
 }
 
+/* 📋 Listas */
 ul {
   padding-left: 20px;
 }
@@ -51,4 +65,3 @@ ul {
 li {
   margin-bottom: 6px;
 }
-

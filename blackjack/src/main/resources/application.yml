@@ -3,40 +3,24 @@ spring:
     name: blackjack
 
   data:
-#    mongodb:
-#      database: blackjack_games
-#      uri: mongodb://localhost:27017
-
-      mongodb:
-        uri: ${SPRING_DATA_MONGODB_URI}
-
-  #  r2dbc:
-  ##    url: r2dbc:mysql://localhost:3306/blackjack_players?serverTimezone=UTC
-  #    url: r2dbc:mysql://localhost:3306/blackjack_players
-  #    username: root
-  #    password: 1707
+    mongodb:
+      database: blackjack_games
+      uri: mongodb://localhost:27017
 
   r2dbc:
-    url: ${SPRING_R2DBC_URL}
-    username: ${SPRING_R2DBC_USERNAME}
-    password: ${SPRING_R2DBC_PASSWORD}
+#    url: r2dbc:mysql://localhost:3306/blackjack_players?serverTimezone=UTC
+    url: r2dbc:mysql://localhost:3306/blackjack_players
+    username: root
+    password: 1707
 
-#server:
-#  port: 8080
 server:
-  port: ${PORT:8080}
+  port: 8080
+
+# EJECUCIÓN EN LOCAL:
 
 # swagger
 # http://localhost:8080/v3/api-docs
 # http://localhost:8080/swagger-ui/index.html#/
 
-# index.html
+# index.html -> Front sencillo
 # http://localhost:8080/index.html
-
-# DEPLOY
-# index.html:
-# https://s501-blackjack-api.onrender.com/
-
-# swagger:
-# https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
-

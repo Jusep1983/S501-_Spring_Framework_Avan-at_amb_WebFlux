@@ -1,15 +1,4 @@
 spring:
-#  r2dbc:
-#    url: r2dbc:mysql://mysql-db:3306/blackjack_players
-#    username: root
-#    password: 1707
-#
-#  data:
-#    mongodb:
-#      uri: mongodb://mongo-db:27017/blackjack_games
-#
-#server:
-#  port: 8080
 
   r2dbc:
     url: ${SPRING_R2DBC_URL}
@@ -18,7 +7,14 @@ spring:
 
   mongodb:
     uri: ${SPRING_DATA_MONGODB_URI}
-#server:
-#  port: 8080
+
 server:
   port: ${PORT:8080}
+
+# DEPLOY
+# index.html:
+# https://s501-blackjack-api.onrender.com/
+
+# swagger:
+# https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
+# https://s501-blackjack-api.onrender.com/v3/api-docs
