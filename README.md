@@ -1,42 +1,61 @@
-# 🎲 Blackjack Reactive API
+# 🎲 S501-_Spring_Framework_Avançat_amb_WebFlux
 
-API REST reactiva para un juego de Blackjack un jugador vs dealer, desarrollada con Spring Boot WebFlux.
-
----
-
-## 📋 Descripción general
-
-Esta aplicación implementa la lógica básica de Blackjack para un único jugador contra la banca. Ofrece:
-
-- **Creación de partidas** y gestión de estados.  
-- **Acciones de juego**: pedir carta (*hit*), plantarse (*stand*).  
-- **Persistencia reactiva** en **MySQL** (jugadores) y **MongoDB** (partidas).  
-- **Manejo global de excepciones** con un `GlobalExceptionHandler`.  
-- **Documentación automática de la API** con Swagger/OpenAPI.  
-- **Pruebas unitarias** con JUnit 5 y Mockito.  
+Proyecto API REST para un juego de Blackjack de un jugador contra el dealer, desarrollado con Spring Boot y WebFlux.
 
 ---
 
-## 🎯 Requisitos cubiertos
+## 📋 Descripción
 
-1. **Implementación básica** con Spring WebFlux (controladores y servicios reactivos).  
-2. **Gestión de excepciones global** mediante `@ControllerAdvice`.  
-3. **Configuración dual de bases de datos**: R2DBC MySQL y MongoDB reactivo.  
-4. **Pruebas** de al menos un controlador y un servicio.  
-5. **Swagger UI** para documentación y prueba de endpoints.  
+Esta API implementa la lógica básica del juego Blackjack para un solo jugador. Permite crear partidas, gestionar turnos (pedir carta, plantarse), y ver el estado del juego.
+
+Está desarrollado usando:
+
+- ☕ Java 21
+- 🚀 Spring Boot con WebFlux (programación reactiva)
+- 🗄️ Persistencia en MongoDB y MySQL (reactivos)
+- 📚 Documentación Swagger para probar los endpoints
+- ✅ Testing con JUnit y Mockito
+- 🛠️ Manejo global de excepciones
 
 ---
 
+## 🎯 Funcionalidades principales
+
+- ➕ Crear una nueva partida asociada a un jugador
+- 🃏 Pedir carta (hit)
+- ✋ Plantarse (stand)
+- 🔍 Consultar estado del juego
+- 🗃️ Persistencia reactiva en MongoDB y MySQL
+- ⚠️ Control de errores y validaciones básicas
+
+---
+
+## 🛠️ Tecnologías usadas
+
+- ☕ Java 21
+- 🚀 Spring Boot 3.5.0 con WebFlux
+- 🍃 MongoDB reactive driver
+- 🔗 R2DBC con MySQL para persistencia reactiva
+- 🧪 JUnit 5 + Mockito para testing
+- 📖 Swagger/OpenAPI para documentación REST
+- 📬 Postman para probar endpoints manualmente
+
+---
+
+## ⚙️ Prerrequisitos
+
+- ☕ Java 21 instalado
+- 🐳 Docker (opcional, para bases de datos o dockerizar la app)
+- 🍃 MongoDB y 🐬 MySQL corriendo local o remoto
+- 💻 IDE recomendado: IntelliJ IDEA / VS Code
+
+---
+
+## 🚀 Cómo ejecutar el proyecto:
 
 <details>
    <summary><strong> 🚀 Nivel 1: Uso local </strong></summary>
-   
-   ### ⚙️ Prerrequisitos
-   
-   - Java 21  
-   - Maven  
-   - Docker (opcional para bases de datos)  
-   
+      
    ### ▶️ Ejecución sin Docker
    
    1. Clona el repositorio:
@@ -98,7 +117,7 @@ Esta aplicación implementa la lógica básica de Blackjack para un único jugad
 </details>
 
 <details>
-   <summary><strong> Nivel 3: 🔧 Despliegue en Render</strong></summary>
+   <summary><strong> 🔧 Nivel 3: Despliegue en Render</strong></summary>
    Conecta tu repo de GitHub a Render.
    
    Define variables de entorno en Render (Environment):
