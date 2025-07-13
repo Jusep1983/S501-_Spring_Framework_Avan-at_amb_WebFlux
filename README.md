@@ -1,142 +1,169 @@
-# 🎲 S501-_Spring_Framework_Avançat_amb_WebFlux
+# 🎲 Blackjack Reactive API
 
-Proyecto API REST para un juego de Blackjack de un jugador contra el dealer, desarrollado con Spring Boot y WebFlux.
-
----
-
-## 📋 Descripción
-
-Esta API implementa la lógica básica del juego Blackjack para un solo jugador. Permite crear partidas, gestionar turnos (pedir carta, plantarse), y ver el estado del juego.
-
-Está desarrollado usando:
-
-- ☕ Java 21
-- 🚀 Spring Boot con WebFlux (programación reactiva)
-- 🗄️ Persistencia en MongoDB y MySQL (reactivos)
-- 📚 Documentación Swagger para probar los endpoints
-- ✅ Testing con JUnit y Mockito
-- 🛠️ Manejo global de excepciones
+API REST reactiva para un juego de Blackjack un jugador vs dealer, desarrollada con Spring Boot WebFlux.
 
 ---
 
-## 🎯 Funcionalidades principales
+## 📋 Descripción general
 
-- ➕ Crear una nueva partida asociada a un jugador
-- 🃏 Pedir carta (hit)
-- ✋ Plantarse (stand)
-- 🔍 Consultar estado del juego
-- 🗃️ Persistencia reactiva en MongoDB y MySQL
-- ⚠️ Control de errores y validaciones básicas
+Esta aplicación implementa la lógica básica de Blackjack para un único jugador contra la banca. Ofrece:
 
----
-
-## 🛠️ Tecnologías usadas
-
-- ☕ Java 21
-- 🚀 Spring Boot 3.x con WebFlux
-- 🍃 MongoDB reactive driver
-- 🔗 R2DBC con MySQL para persistencia reactiva
-- 🧪 JUnit 5 + Mockito para testing
-- 📖 Swagger/OpenAPI para documentación REST
+- **Creación de partidas** y gestión de estados.  
+- **Acciones de juego**: pedir carta (*hit*), plantarse (*stand*).  
+- **Persistencia reactiva** en **MySQL** (jugadores) y **MongoDB** (partidas).  
+- **Manejo global de excepciones** con un `GlobalExceptionHandler`.  
+- **Documentación automática de la API** con Swagger/OpenAPI.  
+- **Pruebas unitarias** con JUnit 5 y Mockito.  
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto
+## 🎯 Requisitos cubiertos
+
+1. **Implementación básica** con Spring WebFlux (controladores y servicios reactivos).  
+2. **Gestión de excepciones global** mediante `@ControllerAdvice`.  
+3. **Configuración dual de bases de datos**: R2DBC MySQL y MongoDB reactivo.  
+4. **Pruebas** de al menos un controlador y un servicio.  
+5. **Swagger UI** para documentación y prueba de endpoints.  
+
+---
+
+## 🚀 Uso local
 
 ### ⚙️ Prerrequisitos
 
-- ☕ Java 21 instalado
-- 🐳 Docker (opcional, para bases de datos o dockerizar la app)
-- 🍃 MongoDB y 🐬 MySQL corriendo local o remoto
-- 💻 IDE recomendado: IntelliJ IDEA / VS Code
+- Java 21  
+- Maven  
+- Docker (opcional para bases de datos)  
 
-### ▶️ Pasos para arrancar
+### ▶️ Ejecución sin Docker
 
-1. Clonar el repositorio
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Jusep1983/blackjack-api.git
+   ```
+   ```bash
+   cd blackjack-api
+   ```
+Ajusta src/main/resources/application.yml con tus credenciales de MySQL y MongoDB locales.
 
-```bash
-git clone https://github.com/tu-usuario/blackjack-api.git
-```
-```bash
-cd blackjack-api
-```
-
-2. Configurar las conexiones a las bases de datos en application.yml (MongoDB y MySQL)
-
-3. Ejecutar la aplicación
+Ejecuta:
 
 ```bash
 ./mvnw spring-boot:run
 ```
+Abre Swagger UI:
 
-4. Acceder a Swagger UI para probar endpoints:
+
+http://localhost:8080/swagger-ui/index.html
+
+Accede al frontend:
+http://localhost:8080/index.html
+
+### 🐳 Ejecución con Docker Compose
+Construye y levanta contenedores:
 
 ```bash
-http://localhost:8080/swagger-ui.html
+docker-compose up -d --build
 ```
+La API y Swagger estarán en:
 
-## 🧪 Testing
-Para ejecutar los tests:
+http://localhost:8080/swagger-ui/index.html
+
+http://localhost:8080/index.html
+
+Para parar (sin borrar volúmenes):
+
+```bash
+
+docker-compose stop
+```
+Para reiniciar contenedores parados:
+
+```bash
+docker-compose start
+```
+Para detener y eliminar contenedores y volúmenes:
+
+```bash
+
+docker-compose down -v
+```
+## 🔧 Despliegue en Render
+Conecta tu repo de GitHub a Render.
+
+Define variables de entorno en Render (Environment):
+
+```env
+SPRING_PROFILES_ACTIVE=docker
+SPRING_R2DBC_URL=<tu_URL_R2DBC>
+SPRING_R2DBC_USERNAME=<usuario>
+SPRING_R2DBC_PASSWORD=<password>
+SPRING_DATA_MONGODB_URI=<tu_URI_MongoDB>
+```
+Render detecta application-docker.yml y usa esas variables.
+
+Haz manual deploy y prueba en:
+
+```arduino
+https://<tu-app>.onrender.com/swagger-ui/index.html
+```
+Mi aplicacion estara disponibvle para probar ya desplegada en:
+
+- Web mediante frontend sencillo:
+  
+https://s501-blackjack-api.onrender.com/index.html
+
+- Swagger:
+  
+https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
+
+## 📜 Endpoints principales
+
+Método	Endpoint	Descripción
+POST	/game/new	Crear nueva partida
+GET	/game/{id}	Detalles de una partida
+POST	/game/{id}/play	Realizar jugada en partida
+DELETE	/game/{id}/delete	Borrar partida
+GET	/ranking	Obtener ranking de jugadores
+PUT	/player/{playerId}	Cambiar nombre de jugador
+
+## 🧪 Pruebas
+Ejecuta todos los tests:
 
 ```bash
 ./mvnw test
 ```
 
-## 📂 Estructura básica del proyecto
+## 🐳 Imagen Docker pública
+Docker Hub
 
-- controller - Endpoints REST
-
-- service - Lógica de negocio
-
-- repository - Persistencia reactiva
-
-- model - Entidades y DTOs
-
-- exception - Manejo de errores personalizados
-
-## 🐳 Dockerización y uso de la imagen Docker
-
-### Construir la imagen localmente
-
-Si quieres construir la imagen Docker de la API desde el código fuente:
-
-```bash
-# En la raíz del proyecto (donde está el Dockerfile)
-docker build -t jusep83/blackjack-blackjack-api:latest .
-```
-Ejecutar el proyecto con Docker Compose (localmente)
-Para levantar la API junto con las bases de datos MongoDB y MySQL usando Docker Compose:
-
-```bash
-docker-compose up -d
-```
-Esto levantará los tres contenedores y la app estará disponible en:
-
-```bash
-http://localhost:8080/swagger-ui.html
-```
-Tambien disponible con frontend sencillo en:
-```bash
-http://localhost:8080/index.html
-```
-Parar y eliminar los contenedores y volúmenes
-```bash
-docker-compose down -v
-```
-Descargar y ejecutar la imagen Docker de la API (sin build)
-
-Si solo quieres usar la imagen ya publicada en Docker Hub y levantar la API (requiere que tengas las bases de datos corriendo y accesibles):
+Ejecutar sin build:
 
 ```bash
 docker pull jusep83/blackjack-blackjack-api:latest
 ```
 ```bash
-docker run -p 8080:8080 --env SPRING_PROFILES_ACTIVE=docker --network blackjack-net jusep83/blackjack-blackjack-api:latest
+docker run -p 8080:8080 --env-file .env jusep83/blackjack-blackjack-api:latest
 ```
-Asegúrate de que las bases de datos MongoDB y MySQL estén accesibles desde el contenedor (pueden estar en otros contenedores en la misma red Docker).
+## 📁 Estructura del proyecto
 
-👤 Autor
+
+src/
+├─ main/
+│  ├─ java/com/jusep1983/blackjack
+│  │  ├─ controller
+│  │  ├─ service
+│  │  ├─ repository
+│  │  ├─ model
+│  │  └─ exception
+│  └─ resources
+│     ├─ application.yml
+│     └─ application-docker.yml
+└─ test/
+
+
+## 👤 Autor
 Josep1983
 
-📄 Licencia
+## 📄 Licencia
 MIT
