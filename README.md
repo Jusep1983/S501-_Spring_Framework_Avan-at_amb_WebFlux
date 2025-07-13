@@ -55,8 +55,8 @@ Está desarrollado usando:
 
 <details>
    <summary><strong> 🚀 Nivel 1: Uso local </strong></summary>
-      
-   ### ▶️ Ejecución sin Docker
+   
+   ---
    
    1. Clona el repositorio:
       ```bash
@@ -65,19 +65,19 @@ Está desarrollado usando:
       ```bash
       cd blackjack-api
       ```
-   Ajusta src/main/resources/application.yml con tus credenciales de MySQL y MongoDB locales.
+   2. Ajusta src/main/resources/application.yml con tus credenciales de MySQL y MongoDB locales.
    
    Ejecuta:
    
    ```bash
    ./mvnw spring-boot:run
    ```
-   Abre Swagger UI:
+   3. Abre Swagger UI:
    
    
    http://localhost:8080/swagger-ui/index.html
    
-   Accede al frontend:
+   4. Accede al frontend:
    
    http://localhost:8080/index.html
    
@@ -85,30 +85,32 @@ Está desarrollado usando:
 
 <details>
    <summary><strong> 🐳 Nivel 2: Ejecución con Docker Compose </strong></summary>
+
+   ---
    
-   Construye y levanta contenedores:
+   1. Construye y levanta contenedores:
    
    ```bash
    docker-compose up -d --build
    ```
-   La API y Swagger estarán en:
+   2. La API y Swagger estarán en:
    
       http://localhost:8080/swagger-ui/index.html
    
       http://localhost:8080/index.html
    
-   Para parar (sin borrar volúmenes):
+   3. Para parar (sin borrar volúmenes):
    
    ```bash
    
    docker-compose stop
    ```
-   Para reiniciar contenedores parados:
+   4. Para reiniciar contenedores parados:
    
    ```bash
    docker-compose start
    ```
-   Para detener y eliminar contenedores y volúmenes:
+   5. Para detener y eliminar contenedores y volúmenes:
    
    ```bash
    
@@ -118,9 +120,12 @@ Está desarrollado usando:
 
 <details>
    <summary><strong> 🔧 Nivel 3: Despliegue en Render</strong></summary>
-   Conecta tu repo de GitHub a Render.
+
+   ---
    
-   Define variables de entorno en Render (Environment):
+   1. Conecta tu repo de GitHub a Render.
+   
+   2. Define variables de entorno en Render (Environment):
    
    ```env
    SPRING_PROFILES_ACTIVE=docker
@@ -129,14 +134,14 @@ Está desarrollado usando:
    SPRING_R2DBC_PASSWORD=<password>
    SPRING_DATA_MONGODB_URI=<tu_URI_MongoDB>
    ```
-   Render detecta application-docker.yml y usa esas variables.
+   3. Render detecta application-docker.yml y usa esas variables.
    
-   Haz manual deploy y prueba en:
+   4. Haz manual deploy y prueba en:
    
    ```arduino
    https://<tu-app>.onrender.com/swagger-ui/index.html
    ```
-   Mi aplicacion estara disponibvle para probar ya desplegada en:
+   5. Mi aplicacion estara disponibvle para probar ya desplegada en:
    
    - Web mediante frontend sencillo:
      
@@ -147,6 +152,8 @@ Está desarrollado usando:
    https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
 
 </details>
+
+---
 
 ## 📜 Endpoints principales
 
@@ -159,6 +166,7 @@ Está desarrollado usando:
 | GET    | `/ranking`             | Obtener ranking de jugadores |
 | PUT    | `/player/{playerId}`   | Cambiar nombre de jugador    |
 
+---
 
 ## 🧪 Pruebas
 Ejecuta todos los tests:
@@ -166,6 +174,8 @@ Ejecuta todos los tests:
 ```bash
 ./mvnw test
 ```
+
+---
 
 ## 🐳 Imagen Docker pública
 Docker Hub
@@ -178,6 +188,7 @@ docker pull jusep83/blackjack-blackjack-api:latest
 ```bash
 docker run -p 8080:8080 --env-file .env jusep83/blackjack-blackjack-api:latest
 ```
+---
 ## 📁 Estructura del proyecto
 
 
@@ -218,7 +229,7 @@ docker run -p 8080:8080 --env-file .env jusep83/blackjack-blackjack-api:latest
             ├── service                       # Tests de PlayerService, GameService, etc.
             └── controller                    # Tests de PlayerController, GameController...
 ```
-
+---
 ## 👤 Autor
 Josep1983
 
