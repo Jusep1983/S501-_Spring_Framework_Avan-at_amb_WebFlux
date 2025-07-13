@@ -51,7 +51,7 @@ Está desarrollado usando:
 
 ---
 
-## 🚀 Cómo ejecutar el proyecto:
+## 🚀 Cómo ejecutar el proyecto (clica en el desplegable para ver cada nivel):
 
 <details>
    <summary><strong> 🚀 Nivel 1: Uso local </strong></summary>
