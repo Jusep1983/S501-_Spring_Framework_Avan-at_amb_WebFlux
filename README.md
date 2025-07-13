@@ -57,9 +57,11 @@ Abre Swagger UI:
 http://localhost:8080/swagger-ui/index.html
 
 Accede al frontend:
+
 http://localhost:8080/index.html
 
 ### 🐳 Ejecución con Docker Compose
+
 Construye y levanta contenedores:
 
 ```bash
@@ -67,9 +69,9 @@ docker-compose up -d --build
 ```
 La API y Swagger estarán en:
 
-http://localhost:8080/swagger-ui/index.html
+   http://localhost:8080/swagger-ui/index.html
 
-http://localhost:8080/index.html
+   http://localhost:8080/index.html
 
 Para parar (sin borrar volúmenes):
 
@@ -119,13 +121,15 @@ https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
 
 ## 📜 Endpoints principales
 
-Método	Endpoint	Descripción
-POST	/game/new	Crear nueva partida
-GET	/game/{id}	Detalles de una partida
-POST	/game/{id}/play	Realizar jugada en partida
-DELETE	/game/{id}/delete	Borrar partida
-GET	/ranking	Obtener ranking de jugadores
-PUT	/player/{playerId}	Cambiar nombre de jugador
+| Método | Endpoint               | Descripción                  |
+|--------|------------------------|------------------------------|
+| POST   | `/game/new`            | Crear nueva partida          |
+| GET    | `/game/{id}`           | Detalles de una partida      |
+| POST   | `/game/{id}/play`      | Realizar jugada en partida   |
+| DELETE | `/game/{id}/delete`    | Borrar partida               |
+| GET    | `/ranking`             | Obtener ranking de jugadores |
+| PUT    | `/player/{playerId}`   | Cambiar nombre de jugador    |
+
 
 ## 🧪 Pruebas
 Ejecuta todos los tests:
@@ -148,19 +152,43 @@ docker run -p 8080:8080 --env-file .env jusep83/blackjack-blackjack-api:latest
 ## 📁 Estructura del proyecto
 
 
-src/
-├─ main/
-│  ├─ java/com/jusep1983/blackjack
-│  │  ├─ controller
-│  │  ├─ service
-│  │  ├─ repository
-│  │  ├─ model
-│  │  └─ exception
-│  └─ resources
-│     ├─ application.yml
-│     └─ application-docker.yml
-└─ test/
-
+```text
+.
+├── Dockerfile                                # Imagen de la API para Docker
+├── docker-compose.yml                        # Orquestación de la API + MySQL + MongoDB
+├── README.md                                 # Documentación del proyecto
+├── pom.xml                                   # Dependencias del proyecto Maven
+├── .dockerignore                             # Archivos que Docker debe ignorar
+├── .gitignore                                # Archivos ignorados por Git
+│
+├── src
+│   └── main
+│       ├── java
+│       │   └── com.jusep1983.blackjack
+│       │       ├── config                    # Configuración general
+│       │       ├── controller                # Controladores REST (GameController, PlayerController, etc.)
+│       │       ├── dto                       # DTOs para entrada y salida
+│       │       ├── enums                     # Enumeraciones: tipos de jugada, estado del juego...
+│       │       ├── exception                 # Excepciones personalizadas y GlobalExceptionHandler
+│       │       ├── model                     # Entidades (Player, Game, Card, etc.)
+│       │       ├── repository                # Interfaces de persistencia (Mongo y MySQL reactivos)
+│       │       ├── response                  # Clases de respuesta estructurada (opcional)
+│       │       ├── service                   # Interfaces e implementaciones de lógica de negocio
+│       │       └── BlackjackApplication.java # Clase principal con el método `main`
+│       │
+│       └── resources
+│           ├── static
+│           │   └── index.html                # Frontend embebido muy básico
+│           ├── application.yml               # Config local (localhost)
+│           ├── application-docker.yml        # Config para entorno Docker o Render
+│           └── application.properties        # (vacío o no usado)
+│
+└── test
+    └── java
+        └── com.jusep1983.blackjack
+            ├── service                       # Tests de PlayerService, GameService, etc.
+            └── controller                    # Tests de PlayerController, GameController...
+```
 
 ## 👤 Autor
 Josep1983
