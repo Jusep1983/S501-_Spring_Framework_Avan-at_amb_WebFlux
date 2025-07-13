@@ -27,97 +27,107 @@ Esta aplicación implementa la lógica básica de Blackjack para un único jugad
 
 ---
 
-## 🚀 Uso local
 
-### ⚙️ Prerrequisitos
-
-- Java 21  
-- Maven  
-- Docker (opcional para bases de datos)  
-
-### ▶️ Ejecución sin Docker
-
-1. Clona el repositorio:
+<details>
+   <summary><strong> 🚀 Nivel 1: Uso local </strong></summary>
+   
+   ### ⚙️ Prerrequisitos
+   
+   - Java 21  
+   - Maven  
+   - Docker (opcional para bases de datos)  
+   
+   ### ▶️ Ejecución sin Docker
+   
+   1. Clona el repositorio:
+      ```bash
+      git clone https://github.com/Jusep1983/blackjack-api.git
+      ```
+      ```bash
+      cd blackjack-api
+      ```
+   Ajusta src/main/resources/application.yml con tus credenciales de MySQL y MongoDB locales.
+   
+   Ejecuta:
+   
    ```bash
-   git clone https://github.com/Jusep1983/blackjack-api.git
+   ./mvnw spring-boot:run
    ```
-   ```bash
-   cd blackjack-api
-   ```
-Ajusta src/main/resources/application.yml con tus credenciales de MySQL y MongoDB locales.
-
-Ejecuta:
-
-```bash
-./mvnw spring-boot:run
-```
-Abre Swagger UI:
-
-
-http://localhost:8080/swagger-ui/index.html
-
-Accede al frontend:
-
-http://localhost:8080/index.html
-
-### 🐳 Ejecución con Docker Compose
-
-Construye y levanta contenedores:
-
-```bash
-docker-compose up -d --build
-```
-La API y Swagger estarán en:
-
+   Abre Swagger UI:
+   
+   
    http://localhost:8080/swagger-ui/index.html
-
+   
+   Accede al frontend:
+   
    http://localhost:8080/index.html
+   
+</details>
 
-Para parar (sin borrar volúmenes):
+<details>
+   <summary><strong> 🐳 Nivel 2: Ejecución con Docker Compose </strong></summary>
+   
+   Construye y levanta contenedores:
+   
+   ```bash
+   docker-compose up -d --build
+   ```
+   La API y Swagger estarán en:
+   
+      http://localhost:8080/swagger-ui/index.html
+   
+      http://localhost:8080/index.html
+   
+   Para parar (sin borrar volúmenes):
+   
+   ```bash
+   
+   docker-compose stop
+   ```
+   Para reiniciar contenedores parados:
+   
+   ```bash
+   docker-compose start
+   ```
+   Para detener y eliminar contenedores y volúmenes:
+   
+   ```bash
+   
+   docker-compose down -v
+   ```
+</details>
 
-```bash
+<details>
+   <summary><strong> Nivel 3: 🔧 Despliegue en Render</strong></summary>
+   Conecta tu repo de GitHub a Render.
+   
+   Define variables de entorno en Render (Environment):
+   
+   ```env
+   SPRING_PROFILES_ACTIVE=docker
+   SPRING_R2DBC_URL=<tu_URL_R2DBC>
+   SPRING_R2DBC_USERNAME=<usuario>
+   SPRING_R2DBC_PASSWORD=<password>
+   SPRING_DATA_MONGODB_URI=<tu_URI_MongoDB>
+   ```
+   Render detecta application-docker.yml y usa esas variables.
+   
+   Haz manual deploy y prueba en:
+   
+   ```arduino
+   https://<tu-app>.onrender.com/swagger-ui/index.html
+   ```
+   Mi aplicacion estara disponibvle para probar ya desplegada en:
+   
+   - Web mediante frontend sencillo:
+     
+   https://s501-blackjack-api.onrender.com/index.html
+   
+   - Swagger:
+     
+   https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
 
-docker-compose stop
-```
-Para reiniciar contenedores parados:
-
-```bash
-docker-compose start
-```
-Para detener y eliminar contenedores y volúmenes:
-
-```bash
-
-docker-compose down -v
-```
-## 🔧 Despliegue en Render
-Conecta tu repo de GitHub a Render.
-
-Define variables de entorno en Render (Environment):
-
-```env
-SPRING_PROFILES_ACTIVE=docker
-SPRING_R2DBC_URL=<tu_URL_R2DBC>
-SPRING_R2DBC_USERNAME=<usuario>
-SPRING_R2DBC_PASSWORD=<password>
-SPRING_DATA_MONGODB_URI=<tu_URI_MongoDB>
-```
-Render detecta application-docker.yml y usa esas variables.
-
-Haz manual deploy y prueba en:
-
-```arduino
-https://<tu-app>.onrender.com/swagger-ui/index.html
-```
-Mi aplicacion estara disponibvle para probar ya desplegada en:
-
-- Web mediante frontend sencillo:
-  
-https://s501-blackjack-api.onrender.com/index.html
-
-- Swagger:
-  
-https://s501-blackjack-api.onrender.com/swagger-ui/index.html#/
+</details>
 
 ## 📜 Endpoints principales
 
